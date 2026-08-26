@@ -10,7 +10,7 @@
   "check": "astro check",
   "format": "prettier --write .",
   "format:check": "prettier --check .",
-  "deploy": "npm run build && gh-pages -d dist"
+  "deploy": "npm run build && gh-pages -d dist --nojekyll"
 },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",

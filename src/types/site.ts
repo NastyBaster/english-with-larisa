@@ -36,6 +36,7 @@ export interface SiteConfig {
     name: string;
     role: string;
     photo: string | null;
+    aboutPhoto: string | null;
     photoAlt: string;
     photoPosition: string;
     aboutPhotoPosition: string;

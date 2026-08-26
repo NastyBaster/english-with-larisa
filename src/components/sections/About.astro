@@ -2,8 +2,9 @@
 import { siteConfig } from '../../config/site';
 import SectionHeading from '../ui/SectionHeading.astro';
 
-const photoSrc = siteConfig.tutor.photo
-  ? `${import.meta.env.BASE_URL}/${siteConfig.tutor.photo.replace(/^\//, '')}`
+const aboutPhoto = siteConfig.tutor.aboutPhoto ?? siteConfig.tutor.photo;
+const photoSrc = aboutPhoto
+  ? `${import.meta.env.BASE_URL}/${aboutPhoto.replace(/^\//, '')}`
   : null;
 ---
 

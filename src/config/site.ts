@@ -11,6 +11,7 @@ export const siteConfig: SiteConfig = {
     name: 'Лариса',
     role: 'Викладачка англійської мови',
     photo: '/images/lara.jpg',
+    aboutPhoto: '/images/lara-about.jpg',
     photoAlt: 'Портрет викладачки англійської мови',
     photoPosition: 'center 35%',
     aboutPhotoPosition: 'center 30%',
