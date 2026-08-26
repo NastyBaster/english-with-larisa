@@ -2,4 +2,58 @@
 import { siteConfig } from '../../config/site';
 import SectionHeading from '../ui/SectionHeading.astro';
 ---
-<section class="section section--tint" id="about"><div class="container about-grid"><div class="about-photo"><div class="photo-placeholder photo-placeholder--about" role="img" aria-label="Місце для другої фотографії викладачки"><span>Ваше фото</span><small>живий професійний портрет</small></div><div class="about-sticker">let’s speak<br /><strong>English!</strong></div></div><div><SectionHeading eyebrow="Про викладачку" title={`Привіт! Я — ${siteConfig.tutor.name}`} />{siteConfig.tutor.bio.map((paragraph) => <p class="about-copy">{paragraph}</p>)}<div class="principle"><span aria-hidden="true">“</span><p>Моя мета — створити простір, де можна ставити запитання, помилятися й поступово відчувати: «Я можу».</p></div></div></div></section>
+
+<section class="section section--tint" id="about">
+  <div class="container about-grid">
+    <div class="about-photo">
+      {
+        siteConfig.tutor.photo ? (
+          <img
+            class="about-photo-image"
+            src={siteConfig.tutor.photo}
+            alt={siteConfig.tutor.photoAlt}
+            width="880"
+            height="940"
+            loading="lazy"
+            style={`object-position: ${siteConfig.tutor.aboutPhotoPosition}`}
+          />
+        ) : (
+          <div
+            class="photo-placeholder photo-placeholder--about"
+            role="img"
+            aria-label="Місце для фотографії викладачки"
+          >
+            <span>Ваше фото</span>
+            <small>живий професійний портрет</small>
+          </div>
+        )
+      }
+
+      <div class="about-sticker">
+        let’s speak<br />
+        <strong>English!</strong>
+      </div>
+    </div>
+
+    <div>
+      <SectionHeading
+        eyebrow="Про викладачку"
+        title={`Привіт! Я — ${siteConfig.tutor.name}`}
+      />
+
+      {
+        siteConfig.tutor.bio.map((paragraph) => (
+          <p class="about-copy">{paragraph}</p>
+        ))
+      }
+
+      <div class="principle">
+        <span aria-hidden="true">“</span>
+        <p>
+          Моя мета — створити простір, де можна ставити запитання, помилятися й
+          поступово відчувати: «Я можу».
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
