@@ -2,8 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { siteConfig } from '../config/site';
+import { getSiteConfig } from '../config/site-config';
 
+const siteConfig = getSiteConfig(Astro.url.pathname);
 const homeUrl = `${import.meta.env.BASE_URL}/`;
 ---
 <BaseLayout title={`Політика конфіденційності — ${siteConfig.tutor.name}`} description="Базова політика конфіденційності сайту викладачки англійської мови.">
