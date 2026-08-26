@@ -1,4 +1,6 @@
 ---
-import { siteConfig } from '../../config/site';
+import { getSiteConfig } from '../../config/site-config';
+const siteConfig = getSiteConfig(Astro.url.pathname);
+const ui = siteConfig.ui;
 ---
-<section class="facts" aria-label="Переваги навчання"><div class="container facts-grid">{siteConfig.facts.map((fact) => <div><strong>{fact.value}</strong><span>{fact.label}</span></div>)}</div></section>
+<section class="facts" aria-label={ui.factsLabel}><div class="container facts-grid">{siteConfig.facts.map((fact) => <div><strong>{fact.value}</strong><span>{fact.label}</span></div>)}</div></section>

@@ -1,6 +1,8 @@
 ---
-import { siteConfig } from '../../config/site';
+import { getSiteConfig } from '../../config/site-config';
 import SectionHeading from '../ui/SectionHeading.astro';
 import ButtonLink from '../ui/ButtonLink.astro';
+const siteConfig = getSiteConfig(Astro.url.pathname);
+const ui = siteConfig.ui;
 ---
-<section class="section section--tint" id="pricing"><div class="container"><SectionHeading eyebrow="Формати й ціни" title="Оберіть комфортний формат" description="Актуальну тривалість, вільні години та остаточну вартість уточнюйте в повідомленні." centered /><div class="pricing-grid">{siteConfig.pricing.map((plan) => <article class:list={['price-card', { 'price-card--featured': plan.featured }]}>{plan.featured && <span class="popular">Найчастіше обирають</span>}<h3>{plan.title}</h3><p>{plan.description}</p><div class="price"><strong>{plan.price}</strong><span>{plan.unit}</span></div><ul>{plan.features.map((feature) => <li><span>✓</span>{feature}</li>)}</ul><ButtonLink href={siteConfig.contact.messengerUrl} external variant={plan.featured ? 'primary' : 'secondary'}>Дізнатися деталі</ButtonLink></article>)}</div></div></section>
+<section class="section section--tint" id="pricing"><div class="container"><SectionHeading eyebrow={ui.pricingEyebrow} title={ui.pricingTitle} description={ui.pricingDescription} centered /><div class="pricing-grid">{siteConfig.pricing.map((plan) => <article class:list={['price-card', { 'price-card--featured': plan.featured }]}>{plan.featured && <span class="popular">{ui.popularLabel}</span>}<h3>{plan.title}</h3><p>{plan.description}</p><div class="price"><strong>{plan.price}</strong><span>{plan.unit}</span></div><ul>{plan.features.map((feature) => <li><span>✓</span>{feature}</li>)}</ul><ButtonLink href={siteConfig.contact.messengerUrl} external variant={plan.featured ? 'primary' : 'secondary'}>{ui.detailsLabel}</ButtonLink></article>)}</div></div></section>

@@ -1,5 +1,7 @@
 ---
-import { siteConfig } from '../../config/site';
+import { getSiteConfig } from '../../config/site-config';
 import SectionHeading from '../ui/SectionHeading.astro';
+const siteConfig = getSiteConfig(Astro.url.pathname);
+const ui = siteConfig.ui;
 ---
-<section class="section"><div class="container"><SectionHeading eyebrow="Методика" title="Не вчимо правила заради правил" description="Будуємо навички, які залишаються з вами поза межами заняття." centered /><div class="method-grid">{siteConfig.methodology.map((item, index) => <article><span class="method-symbol" aria-hidden="true">{['◎', '↗', '✓'][index]}</span><h3>{item.title}</h3><p>{item.description}</p></article>)}</div></div></section>
+<section class="section"><div class="container"><SectionHeading eyebrow={ui.methodologyEyebrow} title={ui.methodologyTitle} description={ui.methodologyDescription} centered /><div class="method-grid">{siteConfig.methodology.map((item, index) => <article><span class="method-symbol" aria-hidden="true">{['◎', '↗', '✓'][index]}</span><h3>{item.title}</h3><p>{item.description}</p></article>)}</div></div></section>

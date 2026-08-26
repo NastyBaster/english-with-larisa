@@ -1,18 +1,20 @@
 ---
 import '../styles/global.css';
-import { siteConfig } from '../config/site';
+import { getSiteConfig } from '../config/site-config';
 
 interface Props { title?: string; description?: string; noindex?: boolean }
+const siteConfig = getSiteConfig(Astro.url.pathname);
 const { title = siteConfig.seo.title, description = siteConfig.seo.description, noindex = false } = Astro.props;
 const siteUrl = Astro.site ?? new URL('https://example.com');
 const canonical = new URL(Astro.url.pathname, siteUrl);
 const baseUrl = import.meta.env.BASE_URL;
+const language = Astro.url.pathname.includes('/en/') ? 'en' : 'uk';
 const socialImage = new URL(`${baseUrl}/${siteConfig.seo.image.replace(/^\//, '')}`, siteUrl);
 const faviconUrl = `${baseUrl}/favicon.svg`;
 ---
 
 <!doctype html>
-<html lang="uk">
+<html lang={language}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -22,7 +24,7 @@ const faviconUrl = `${baseUrl}/favicon.svg`;
     <link rel="canonical" href={canonical} />
     <link rel="icon" href={faviconUrl} type="image/svg+xml" />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="uk_UA" />
+    <meta property="og:locale" content={language === 'en' ? 'en_US' : 'uk_UA'} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />

@@ -1,19 +1,24 @@
 ---
-import { siteConfig } from '../config/site';
+import { getSiteConfig } from '../config/site-config';
 import ButtonLink from './ui/ButtonLink.astro';
 
-const homeUrl = `${import.meta.env.BASE_URL}/`;
+const siteConfig = getSiteConfig(Astro.url.pathname);
+const isEnglish = Astro.url.pathname.includes('/en/');
+const homeUrl = isEnglish ? `${import.meta.env.BASE_URL}/en/` : `${import.meta.env.BASE_URL}/`;
 const navigationUrl = (href: string) => (href.startsWith('#') ? `${homeUrl}${href}` : href);
+const languageUrl = isEnglish ? `${import.meta.env.BASE_URL}/` : `${import.meta.env.BASE_URL}/en/`;
+const languageLabel = isEnglish ? siteConfig.ui.switchToUkrainian : siteConfig.ui.switchToEnglish;
 ---
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href={homeUrl} aria-label={`${siteConfig.tutor.name} — на головну`}>
+    <a class="brand" href={homeUrl} aria-label={`${siteConfig.tutor.name} — ${siteConfig.ui.homeLabel}`}>
       <span class="brand-mark" aria-hidden="true">EN</span>
       <span><strong>{siteConfig.tutor.name}</strong><small>{siteConfig.tutor.role}</small></span>
     </a>
-    <nav aria-label="Основна навігація">
+    <nav aria-label={siteConfig.ui.navigationLabel}>
       <ul>{siteConfig.navigation.map((item) => <li><a href={navigationUrl(item.href)}>{item.label}</a></li>)}</ul>
     </nav>
-    <ButtonLink href={siteConfig.contact.messengerUrl} external class="header-cta">Зв’язатися</ButtonLink>
+    <ButtonLink href={siteConfig.contact.messengerUrl} external class="header-cta">{siteConfig.contact.messengerLabel}</ButtonLink>
+    <a class="language-switch" href={languageUrl} aria-label={`${siteConfig.ui.languageLabel}: ${languageLabel}`}>{languageLabel}</a>
   </div>
 </header>
