@@ -37,6 +37,8 @@ export interface SiteConfig {
     role: string;
     photo: string | null;
     photoAlt: string;
+    photoPosition: string;
+    aboutPhotoPosition: string;
     bio: string[];
   };
   contact: { messengerUrl: string; messengerLabel: string; email?: string };
