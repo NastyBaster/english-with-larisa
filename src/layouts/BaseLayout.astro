@@ -1,0 +1,35 @@
+---
+import '../styles/global.css';
+import { siteConfig } from '../config/site';
+
+interface Props { title?: string; description?: string; noindex?: boolean }
+const { title = siteConfig.seo.title, description = siteConfig.seo.description, noindex = false } = Astro.props;
+const siteUrl = Astro.site ?? new URL('https://example.com');
+const canonical = new URL(Astro.url.pathname, siteUrl);
+const socialImage = new URL(siteConfig.seo.image, siteUrl);
+---
+
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#e8673d" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="uk_UA" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Перейти до основного вмісту</a>
+    <slot />
+  </body>
+</html>

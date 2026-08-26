@@ -1,0 +1,24 @@
+---
+import { siteConfig } from '../../config/site';
+import ButtonLink from '../ui/ButtonLink.astro';
+---
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><span></span>{siteConfig.hero.eyebrow}</p>
+      <h1>{siteConfig.hero.title}</h1>
+      <p class="hero-lead">{siteConfig.hero.description}</p>
+      <div class="hero-actions"><ButtonLink href={siteConfig.contact.messengerUrl} external>{siteConfig.contact.messengerLabel}</ButtonLink><a class="text-link" href="#directions">Обрати напрям <span aria-hidden="true">↓</span></a></div>
+      <p class="hero-note"><span aria-hidden="true">✓</span>{siteConfig.hero.note}</p>
+    </div>
+    <div class="hero-visual">
+      <div class="accent-shape" aria-hidden="true"></div>
+      <div class="portrait-card">
+        {siteConfig.tutor.photo ? <img src={siteConfig.tutor.photo} alt={siteConfig.tutor.photoAlt} width="560" height="680" /> : <div class="photo-placeholder" role="img" aria-label="Місце для фотографії викладачки"><span>Ваше фото</span><small>додайте дозволений портрет</small></div>}
+        <div class="portrait-caption"><span class="status-dot"></span><span><strong>Запис на заняття</strong><small>уточнюйте в повідомленні</small></span></div>
+      </div>
+      <div class="word-card word-card--one"><span>confidence</span><small>/ˈkɒnfɪdəns/</small></div>
+      <div class="word-card word-card--two">Hello! <span>👋</span></div>
+    </div>
+  </div>
+</section>

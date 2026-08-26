@@ -1,0 +1,5 @@
+---
+import { siteConfig } from '../../config/site';
+import SectionHeading from '../ui/SectionHeading.astro';
+---
+<section class="section" id="faq"><div class="container faq-grid"><SectionHeading eyebrow="FAQ" title="Часті запитання" description="Не знайшли відповіді? Напишіть — обговоримо вашу ситуацію особисто." /><div>{siteConfig.faq.map((item, index) => <details open={index === 0}><summary>{item.question}<span aria-hidden="true"></span></summary><p>{item.answer}</p></details>)}</div></div></section>

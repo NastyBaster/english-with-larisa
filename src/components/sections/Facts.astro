@@ -1,0 +1,4 @@
+---
+import { siteConfig } from '../../config/site';
+---
+<section class="facts" aria-label="Переваги навчання"><div class="container facts-grid">{siteConfig.facts.map((fact) => <div><strong>{fact.value}</strong><span>{fact.label}</span></div>)}</div></section>

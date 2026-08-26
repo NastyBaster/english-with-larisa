@@ -1,0 +1,5 @@
+---
+import { siteConfig } from '../../config/site';
+import SectionHeading from '../ui/SectionHeading.astro';
+---
+<section class="section"><div class="container"><SectionHeading eyebrow="Відгуки" title="Що кажуть учні" centered /><div class="testimonial-grid">{siteConfig.testimonials.map((item) => <figure><blockquote>“{item.quote}”</blockquote><figcaption><strong>{item.author}</strong>{item.context && <span>{item.context}</span>}</figcaption></figure>)}</div></div></section>

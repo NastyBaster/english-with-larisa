@@ -1,0 +1,5 @@
+---
+import { siteConfig } from '../../config/site';
+import SectionHeading from '../ui/SectionHeading.astro';
+---
+<section class="section"><div class="container results-grid"><SectionHeading eyebrow="Результат" title="Що зміниться у вашому навчанні" description="Не обіцяю магічного результату за кілька уроків. Натомість пропоную послідовну роботу, зрозумілий фокус і практику." /><ul class="check-list">{siteConfig.results.map((result) => <li><span aria-hidden="true">✓</span>{result}</li>)}</ul></div></section>
