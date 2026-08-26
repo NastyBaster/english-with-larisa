@@ -1,5 +1,7 @@
 ---
-import { siteConfig } from '../../config/site';
+import { getSiteConfig } from '../../config/site-config';
 import SectionHeading from '../ui/SectionHeading.astro';
+const siteConfig = getSiteConfig(Astro.url.pathname);
+const ui = siteConfig.ui;
 ---
-<section class="section section--dark" id="process"><div class="container"><SectionHeading eyebrow="Як усе працює" title="Від першого повідомлення до впевненого прогресу" centered /><ol class="process-list">{siteConfig.process.map((step, index) => <li><span class="step-number">0{index + 1}</span><div><h3>{step.title}</h3><p>{step.description}</p></div></li>)}</ol></div></section>
+<section class="section section--dark" id="process"><div class="container"><SectionHeading eyebrow={ui.processEyebrow} title={ui.processTitle} centered /><ol class="process-list">{siteConfig.process.map((step, index) => <li><span class="step-number">0{index + 1}</span><div><h3>{step.title}</h3><p>{step.description}</p></div></li>)}</ol></div></section>

@@ -1,5 +1,7 @@
 ---
-import { siteConfig } from '../../config/site';
+import { getSiteConfig } from '../../config/site-config';
 import SectionHeading from '../ui/SectionHeading.astro';
+const siteConfig = getSiteConfig(Astro.url.pathname);
+const ui = siteConfig.ui;
 ---
-<section class="section" id="directions"><div class="container"><SectionHeading eyebrow="Напрями навчання" title="Знайдемо формат під вашу ціль" description="Кожна програма адаптується до стартового рівня, темпу та ситуацій, у яких вам потрібна англійська." /><div class="card-grid">{siteConfig.directions.map((item, index) => <article class="direction-card"><div class:list={['direction-icon', `direction-icon--${index + 1}`]}>{item.icon}</div><h3>{item.title}</h3><p>{item.description}</p><ul class="tags">{item.tags.map((tag) => <li>{tag}</li>)}</ul></article>)}</div></div></section>
+<section class="section" id="directions"><div class="container"><SectionHeading eyebrow={ui.directionsEyebrow} title={ui.directionsTitle} description={ui.directionsDescription} /><div class="card-grid">{siteConfig.directions.map((item, index) => <article class="direction-card"><div class:list={['direction-icon', `direction-icon--${index + 1}`]}>{item.icon}</div><h3>{item.title}</h3><p>{item.description}</p><ul class="tags">{item.tags.map((tag) => <li>{tag}</li>)}</ul></article>)}</div></div></section>

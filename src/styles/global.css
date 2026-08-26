@@ -204,6 +204,13 @@ nav a:hover {
   padding: 8px 16px;
   font-size: 0.82rem;
 }
+.language-switch {
+  color: var(--accent-dark);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-underline-offset: 4px;
+  white-space: nowrap;
+}
 
 .hero {
   overflow: hidden;

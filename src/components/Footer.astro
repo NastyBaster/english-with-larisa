@@ -1,14 +1,16 @@
 ---
-import { siteConfig } from '../config/site';
+import { getSiteConfig } from '../config/site-config';
 
+const siteConfig = getSiteConfig(Astro.url.pathname);
 const baseUrl = import.meta.env.BASE_URL;
-const navigationUrl = (href: string) => (href.startsWith('#') ? `${baseUrl}/${href}` : href);
+const homeUrl = Astro.url.pathname.includes('/en/') ? `${baseUrl}/en/` : `${baseUrl}/`;
+const navigationUrl = (href: string) => (href.startsWith('#') ? `${homeUrl}${href}` : href);
 ---
 <footer class="site-footer">
   <div class="container footer-grid">
-    <div><a class="brand brand--footer" href={baseUrl}><span class="brand-mark">EN</span><span><strong>{siteConfig.tutor.name}</strong><small>{siteConfig.tutor.role}</small></span></a></div>
-    <div><p class="footer-label">Навігація</p>{siteConfig.navigation.slice(0, 4).map((item) => <a href={navigationUrl(item.href)}>{item.label}</a>)}</div>
-    <div><p class="footer-label">Контакти</p><a href={siteConfig.contact.messengerUrl} target="_blank" rel="noopener noreferrer">{siteConfig.contact.messengerLabel}</a>{siteConfig.contact.email && <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a>}</div>
+    <div><a class="brand brand--footer" href={homeUrl}><span class="brand-mark">EN</span><span><strong>{siteConfig.tutor.name}</strong><small>{siteConfig.tutor.role}</small></span></a></div>
+    <div><p class="footer-label">{siteConfig.ui.navigationLabel}</p>{siteConfig.navigation.slice(0, 4).map((item) => <a href={navigationUrl(item.href)}>{item.label}</a>)}</div>
+    <div><p class="footer-label">{siteConfig.ui.contactLabel}</p><a href={siteConfig.contact.messengerUrl} target="_blank" rel="noopener noreferrer">{siteConfig.contact.messengerLabel}</a>{siteConfig.contact.email && <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a>}</div>
   </div>
-  <div class="container footer-bottom"><p>© {new Date().getFullYear()} {siteConfig.tutor.name}</p><a href={`${baseUrl}/privacy/`}>Політика конфіденційності</a></div>
+  <div class="container footer-bottom"><p>© {new Date().getFullYear()} {siteConfig.tutor.name}</p><a href={`${baseUrl}/privacy/`}>{siteConfig.ui.privacyLabel}</a></div>
 </footer>

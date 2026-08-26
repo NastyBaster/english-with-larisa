@@ -1,7 +1,9 @@
 ---
-import { siteConfig } from '../../config/site';
+import { getSiteConfig } from '../../config/site-config';
 import SectionHeading from '../ui/SectionHeading.astro';
 
+const siteConfig = getSiteConfig(Astro.url.pathname);
+const ui = siteConfig.ui;
 const aboutPhoto = siteConfig.tutor.aboutPhoto ?? siteConfig.tutor.photo;
 const photoSrc = aboutPhoto
   ? `${import.meta.env.BASE_URL}/${aboutPhoto.replace(/^\//, '')}`
@@ -42,8 +44,8 @@ const photoSrc = aboutPhoto
 
     <div>
       <SectionHeading
-        eyebrow="Про викладачку"
-        title={`Привіт! Я — ${siteConfig.tutor.name}`}
+        eyebrow={ui.aboutEyebrow}
+        title={`${ui.aboutTitle} ${siteConfig.tutor.name}`}
       />
 
       {
@@ -55,8 +57,7 @@ const photoSrc = aboutPhoto
       <div class="principle">
         <span aria-hidden="true">“</span>
         <p>
-          Моя мета — створити простір, де можна ставити запитання, помилятися й
-          поступово відчувати: «Я можу».
+          {ui.principle}
         </p>
       </div>
     </div>
