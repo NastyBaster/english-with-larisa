@@ -4,14 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "check": "astro check",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "deploy": "astro build && gh-pages -d dist"
-  },
+  "dev": "astro dev",
+  "build": "astro check && astro build",
+  "preview": "astro preview",
+  "check": "astro check",
+  "format": "prettier --write .",
+  "format:check": "prettier --check .",
+  "deploy": "npm run build && gh-pages -d dist"
+},
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
     "astro": "^5.13.0"
