@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { siteConfigEn } from '../../config/site.en';
+
+const homeUrl = `${import.meta.env.BASE_URL}/en/`;
+---
+<BaseLayout title={`Privacy policy - ${siteConfigEn.tutor.name}`} description="Basic privacy policy for the English teacher's website.">
+  <Header />
+  <main id="main" class="legal-page"><div class="container legal-content"><p class="eyebrow">Legal information</p><h1>Privacy policy</h1><p class="legal-updated">Last updated: August 24, 2026</p><h2>1. What data is processed</h2><p>This website does not collect personal data through its own forms or create user accounts. If you follow a messenger link or send an email, your data is processed by the relevant service according to its own rules.</p><h2>2. How messages are used</h2><p>Information you voluntarily send is used only to respond to your request, arrange lessons, and communicate about learning.</p><h2>3. Third-party services</h2><p>The website may contain links to Telegram or another messenger. After you follow a link, the privacy policy of that service applies.</p><h2>4. Cookies and analytics</h2><p>The basic version of this website does not use analytics, advertising pixels, or its own cookies. If these tools are added later, this policy must be updated.</p><h2>5. Contact</h2><p>For privacy questions or to request deletion of data you have provided, email <a href={`mailto:${siteConfigEn.contact.email}`}>{siteConfigEn.contact.email}</a>.</p><a class="back-link" href={homeUrl}>{siteConfigEn.ui.backHomeLabel}</a></div></main>
+  <Footer />
+</BaseLayout>
