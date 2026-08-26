@@ -305,33 +305,6 @@ nav a:hover {
   margin-top: 8px;
   text-align: center;
 }
-.portrait-caption {
-  position: absolute;
-  right: 20px;
-  bottom: 18px;
-  left: 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 18px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: var(--shadow);
-}
-.portrait-caption strong,
-.portrait-caption small {
-  display: block;
-}
-.portrait-caption small {
-  color: var(--muted);
-}
-.status-dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: #54a870;
-  box-shadow: 0 0 0 5px #dcebdd;
-}
 .word-card {
   position: absolute;
   padding: 11px 16px;

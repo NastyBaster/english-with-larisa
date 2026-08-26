@@ -3,6 +3,7 @@ import { siteConfig } from '../config/site';
 import ButtonLink from './ui/ButtonLink.astro';
 
 const homeUrl = `${import.meta.env.BASE_URL}/`;
+const navigationUrl = (href: string) => (href.startsWith('#') ? `${homeUrl}${href}` : href);
 ---
 <header class="site-header">
   <div class="container header-inner">
@@ -11,7 +12,7 @@ const homeUrl = `${import.meta.env.BASE_URL}/`;
       <span><strong>{siteConfig.tutor.name}</strong><small>{siteConfig.tutor.role}</small></span>
     </a>
     <nav aria-label="Основна навігація">
-      <ul>{siteConfig.navigation.map((item) => <li><a href={item.href}>{item.label}</a></li>)}</ul>
+      <ul>{siteConfig.navigation.map((item) => <li><a href={navigationUrl(item.href)}>{item.label}</a></li>)}</ul>
     </nav>
     <ButtonLink href={siteConfig.contact.messengerUrl} external class="header-cta">Зв’язатися</ButtonLink>
   </div>
