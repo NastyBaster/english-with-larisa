@@ -1,16 +1,20 @@
 ---
 import { siteConfig } from '../../config/site';
 import SectionHeading from '../ui/SectionHeading.astro';
+
+const photoSrc = siteConfig.tutor.photo
+  ? `${import.meta.env.BASE_URL}/${siteConfig.tutor.photo.replace(/^\//, '')}`
+  : null;
 ---
 
 <section class="section section--tint" id="about">
   <div class="container about-grid">
     <div class="about-photo">
       {
-        siteConfig.tutor.photo ? (
+        photoSrc ? (
           <img
             class="about-photo-image"
-            src={siteConfig.tutor.photo}
+            src={photoSrc}
             alt={siteConfig.tutor.photoAlt}
             width="880"
             height="940"
