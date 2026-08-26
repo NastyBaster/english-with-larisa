@@ -8,9 +8,9 @@ export const siteConfig: SiteConfig = {
     image: '/og-cover.svg',
   },
   tutor: {
-    name: 'Ім’я викладачки',
+    name: 'Лариса',
     role: 'Викладачка англійської мови',
-    photo: null,
+    photo: '/images/lara.jpg',
     photoAlt: 'Портрет викладачки англійської мови',
     bio: [
       'Допомагаю дітям і дорослим розібратися в англійській, говорити впевненіше та бачити власний прогрес.',
@@ -18,9 +18,9 @@ export const siteConfig: SiteConfig = {
     ],
   },
   contact: {
-    messengerUrl: 'https://t.me/your_username',
+    messengerUrl: 'https://t.me/Loryl',
     messengerLabel: 'Написати в Telegram',
-    email: 'hello@example.com',
+    email: 'laralemishko@gmail.com',
   },
   navigation: [
     { label: 'Напрями', href: '#directions' },
@@ -120,7 +120,7 @@ export const siteConfig: SiteConfig = {
     {
       title: 'Індивідуальне заняття',
       description: 'Персональний темп і програма під одну конкретну ціль.',
-      price: 'від ХХХ ₴',
+      price: 'від 600 ₴',
       unit: 'за заняття',
       features: ['Онлайн', 'Персональні матеріали', 'Зворотний зв’язок'],
       featured: true,
@@ -129,7 +129,7 @@ export const siteConfig: SiteConfig = {
       title: 'Заняття в парі',
       description:
         'Більше живої взаємодії для учнів зі схожим рівнем і цілями.',
-      price: 'від ХХХ ₴',
+      price: 'від 500 ₴',
       unit: 'з людини',
       features: ['Онлайн', '2 учні', 'Спільна розмовна практика'],
     },
