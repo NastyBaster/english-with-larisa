@@ -1,12 +1,12 @@
 ---
-import { getSiteConfig } from '../config/site-config';
+import { getSiteConfig, withBasePath } from '../config/site-config';
 import ButtonLink from './ui/ButtonLink.astro';
 
 const siteConfig = getSiteConfig(Astro.url.pathname);
 const isEnglish = Astro.url.pathname.includes('/en/');
-const homeUrl = isEnglish ? `${import.meta.env.BASE_URL}/en/` : `${import.meta.env.BASE_URL}/`;
+const homeUrl = isEnglish ? withBasePath('/en/') : withBasePath('/');
 const navigationUrl = (href: string) => (href.startsWith('#') ? `${homeUrl}${href}` : href);
-const languageUrl = isEnglish ? `${import.meta.env.BASE_URL}/` : `${import.meta.env.BASE_URL}/en/`;
+const languageUrl = isEnglish ? withBasePath('/') : withBasePath('/en/');
 const languageLabel = isEnglish ? siteConfig.ui.switchToUkrainian : siteConfig.ui.switchToEnglish;
 ---
 <header class="site-header">

@@ -1,12 +1,10 @@
 ---
-import { getSiteConfig } from '../../config/site-config';
+import { getSiteConfig, withBasePath } from '../../config/site-config';
 import ButtonLink from '../ui/ButtonLink.astro';
 
 const siteConfig = getSiteConfig(Astro.url.pathname);
 const ui = siteConfig.ui;
-const photoSrc = siteConfig.tutor.photo
-  ? `${import.meta.env.BASE_URL}/${siteConfig.tutor.photo.replace(/^\//, '')}`
-  : null;
+const photoSrc = siteConfig.tutor.photo ? withBasePath(siteConfig.tutor.photo) : null;
 ---
 <section class="hero">
   <div class="container hero-grid">

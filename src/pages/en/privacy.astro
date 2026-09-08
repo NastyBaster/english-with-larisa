@@ -3,8 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { siteConfigEn } from '../../config/site.en';
+import { withBasePath } from '../../config/site-config';
 
-const homeUrl = `${import.meta.env.BASE_URL}/en/`;
+const homeUrl = withBasePath('/en/');
 ---
 <BaseLayout title={`Privacy policy - ${siteConfigEn.tutor.name}`} description="Basic privacy policy for the English teacher's website.">
   <Header />

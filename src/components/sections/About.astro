@@ -1,13 +1,11 @@
 ---
-import { getSiteConfig } from '../../config/site-config';
+import { getSiteConfig, withBasePath } from '../../config/site-config';
 import SectionHeading from '../ui/SectionHeading.astro';
 
 const siteConfig = getSiteConfig(Astro.url.pathname);
 const ui = siteConfig.ui;
 const aboutPhoto = siteConfig.tutor.aboutPhoto ?? siteConfig.tutor.photo;
-const photoSrc = aboutPhoto
-  ? `${import.meta.env.BASE_URL}/${aboutPhoto.replace(/^\//, '')}`
-  : null;
+const photoSrc = aboutPhoto ? withBasePath(aboutPhoto) : null;
 ---
 
 <section class="section section--tint" id="about">
