@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://example.com/sitemap-index.xml
+Host: lara.pp.ua
+Sitemap: https://lara.pp.ua/sitemap-index.xml
